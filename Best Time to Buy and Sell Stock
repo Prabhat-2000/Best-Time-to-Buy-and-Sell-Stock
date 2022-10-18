@@ -1,0 +1,15 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        
+        int n = prices.length;
+        int[] maxProf = new int[n];
+        int overallMax = 0;
+        for(int i = 1; i < n; i++){
+            int diff = prices[i] - prices[i-1];
+			if(maxProf[i-1] < 0) maxProf[i] = diff;
+			else maxProf[i] = maxProf[i-1] + diff;
+            overallMax = Math.max(overallMax, maxProf[i]);
+        }
+        return overallMax;
+    }
+}
